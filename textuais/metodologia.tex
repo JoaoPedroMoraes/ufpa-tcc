@@ -1,0 +1,123 @@
+% METODOLOGIA------------------------------------------------------------------
+
+\chapter{METODOLOGIA}
+\label{chap:metodologia}
+
+%\section{Finalidade}
+
+O objetivo deste trabalho é  aprofundar o conhecimento científico a cerca do cenário de licenciamento de projetos de software livre, mais especificamente da linguagem de programação JavaScript.
+\gnote{altere todas as ocorrencias de open source para software livre}
+Para alcançar esse entendimento, são empregados métodos de pesquisa quantitativa, apoiado do uso de técnicas estatísticas descritiva.
+
+Ao longo deste capítulo, será descrito as questões de pesquisa (Seção~\ref{sec:qps}) e a abordagem utilizada para minerar projetos de software (Seção~\ref{}).
+
+\section{Questões de Pesquisa}\label{sec:qps}
+
+Este trabalho é guiado pelas seguintes questões de pesquisa.
+
+\begin{itemize}
+    \item[\textbf{QP1.}] Qual o panorama geral do uso de licenças em projetos JavaScript?
+\end{itemize}
+
+\gnote{pra cada uma dessas perguntas é preciso dizer pq ela é importante... qual o beneficio dela para o leitor? ou para a ciencia?}
+
+\begin{itemize}
+    \item[\textbf{QP2.}] Em quais arquivos desenvolvedores declaram suas licenças de software?
+\end{itemize}
+
+
+\begin{itemize}
+    \item[\textbf{QP3.}] Com que frequência são empregadas licenças não reconhecidas? 
+\end{itemize}
+
+%Esse trabalho se caracteriza por ser uma pesquisa básica estratégica, que tem como principal 
+
+%\section{Objetivos}
+%Essa trabalho tem com características uso de métodos de pesquisa descritiva e exploratória, pois que tem como principal objetivo proporcionar maior clareza a respeito do panorama de como o licenciamento de projetos open source estão definido atualmente. 
+
+%\section{Abordagem}
+%A abordagem de analise dos dados dessa pesquisa sera feita de forma quantitativa. 
+
+\section{Mineração de projetos de software}
+
+Nessa seção será descrito os passos \gnote{mencionar cada subsecao da secao, e fazer link para elas (assim como no começo do capitulo}.
+
+%Será usado o método indutivo. Pois a pesquisa sera organizada em quatro partes, sendo elas a coleta de dados, organização sistemática e racional dos dados coletados, formulação de hipóteses segundo a analise dos dados recolhidos e comprovação das hipóteses através dos dados levantados.
+
+%\section{Procedimentos}
+
+\subsection{Seleção de Projetos JavaScript}
+
+Para definição da amostra da pesquisa, foi usado o dataset disponibilizado pelo trabalho de Barros \cite{7816479}, que coletou cerca de 5.000 repositórios do GitHub (os mais populares, por número de estrelas, em janeiro de 2017) e disponibilizou em formato CSV através da plataforma Zenodo\footnote{Disponível em: \texttt{\url{https://zenodo.org/record/804474#.XZvkzOZKhZW}}}. 
+Usando este dataset, foram selecionados os projetos escritos em JavaScript, totalizando 1.552 repositórios. Para essa pesquisa, focou-se somente em projetos JavaScript por ao menos três importantes motivos: (1) JavaScript é uma das linguagens mais populares no mundo atualmente \cite{JSpopular}, (2) JavaScript é a linguagem de programação com maior número de projetos no GitHub \cite{JSInGithub}, (3) JavaScript tem sido largamente empregada não somente na web, mas também em outros contextos, como criação de aplicativos para dispositivos móveis (iOS e Android) \cite{JSMobileApps} ou em sistemas embarcados \cite{JSIoT}, além de ser frequentemente investigada em estudos científicos \cite{8595210,8816735}.
+
+Dentre os projetos selecionados, estão 
+FreeCodeCamp\footnote{Disponível em: \textt{\url{https://github.com/freeCodeCamp/freeCodeCamp}}},
+Bootstrap\footnote{Disponível em: \textt{\url{https://github.com/twbs/bootstrap}}},
+React (Facebook)\footnote{Disponível em: \textt{\url{https://github.com/facebook/react}}} e 
+Angular.js\footnote{Disponível em: \textt{\url{https://github.com/angular/angular.js}}},
+\gnote{coloque aqui os nomes de alguns projetos. Se sobrar tempo, faça uma tabela como essa tabela 2: http://gustavopinto.org/lost+found/saner2016.pdf, usando linhas de codigo como primeira coluna}.
+
+%\section{Técnica e procedimento de coleta}
+Usando a linguagem de programação Python (versão 3.6), foi desenvolvido um script que lê o dataset, separa somente os repositórios de JavaScript e, em seguida, fez um copia local do repositório hospedado no Github.%, usando o sistema de controle de versionamento GIT\footnote{Git é um sistema de controle de versão distribuído de código aberto e gratuito , projetado para lidar com tudo, de projetos pequenos a grandes, com velocidade e eficiência. Disponivel em: \url{https://git-scm.com/}}.
+Para analisar as informações de licenças dos projetos em questão, utilizou-se inicialmente um pacote desenvolvido em JavaScript e distribuído pelo gerenciador de pacotes NPM\footnote{NPM é o gerenciador de pacotes para Node.js.% Foi criado em 2009 como um projeto de código aberto para ajudar os desenvolvedores de JavaScript a compartilhar facilmente módulos de código empacotados. 
+Disponível em:\url{https://www.npmjs.com/}}, denominado License Checker\footnote{Disponível em: \url{https://www.npmjs.com/package/license-checker}}, essa ferramenta analisa o repositório e retorna a licença(s) encontrada(s) no mesmo. Mas os resultados obtidos pela ferramenta foram insatisfatórios, pois dos 1.552 repositórios analisados pela tal, foram encontrados a licença de cerca de somente 300 projetos (menos de 20\% da população da pesquisa). Essa limitação existe devido a ferramente fazer análise de licenças em projetos que usem o NPM como gestor de dependências.
+
+%Posteriormente a esses resultados, que foram insuficientes para os fins dessa pesquisa, 
+Para minimizar essas limitações, buscou-se outras ferramentas que apresentassem comportamento semelhante, no entanto, sem a restrição de focar em projetos baseados em NPM. Nesse contexto, foi-se utilizada uma ferramenta chamada ScanCode Toolkit\footnote{Disponível em: \url{https://github.com/nexB/scancode-toolkit}} da empresa NexB. Essa ferramenta é desenvolvida em Python e fornece um mecanismo de detecção de licença mais preciso e faz uma comparação mais detalhada entre um banco de dados de textos de licença e as encontradas na sua análise, em vez de depender apenas de padrões de expressão regular ou pesquisa probabilística (como a primeira ferramenta fazia). Mais objetivamente, a ferramenta ScanCode realiza os seguintes passos para identificar as licenças de software livre:
+
+\begin{enumerate}
+    \item \textbf{bla bla bla.} aqui se faz isso e aquilo.
+    \item \textbf{bla bla bla.} aqui se faz isso e aquilo.
+    \item \textbf{bla bla bla.} aqui se faz isso e aquilo.
+\end{enumerate}\gnote{nesses bullets, tem que dizer o que a ferramenta faz.. procura por aquivos especificos, varre todo o codigo, como faz o match, etc. é preciso entender isso a fundo. olhar o site da ferramenta, olhar o codigo, etc}
+
+Após execução da ferramenta ScanCode, foi possível analisar todos os 1552 repositórios de projetos JavaScript do dataset utilizado. Após a análise, a ferramenta disponibiliza para o usuário um arquivo em formato CSV, contendo a incidência individual de licenças em cada arquivo presente no repositório. \gnote{talvez colocar uma figura dessa csv aqui}
+
+De forma a validar o resultado reportado pela ferramenta ScanCode, foi manualmente analisado o resultado de metade dos projetos selecionados (776) e comparados com os resultados apontados pela ferramenta. Durante essa análise manual, foi seguido o seguinte procedimento: 
+
+\begin{enumerate}
+    \item 
+    \item Para cada projeto foi acessado o endereço do Github e verificou o arquivo de licença.
+    \item Se 
+    \item \textbf{bla bla bla.} aqui se faz isso e aquilo.
+    \item \textbf{bla bla bla.} aqui 
+    se faz isso e aquilo.
+    \item \textbf{bla bla bla.} aqui se faz isso e aquilo.
+\end{enumerate}\gnote{se abriu o arquivo de license, depois se abriu o arquivo xxx, depois ....}
+
+Após essa atividade, foi-se observado que a ferramenta apresentou uma acurácia de xxx\% de identificação de licenças nos projetos selecionados.
+
+%\section{Técnica e procedimento de análise}
+%Após esse período de coleta de dados com as ferramentas, iniciou-se o processo de análise. Foram validados 50\% dos resultados (776) de forma manual, abrindo cada resultado e comparando com as licenças listadas no Github.
+
+Posteriormente foi criado um outro script em Python que faz a analise dos resultados e filtra os resultados com mais de uma licença listada. No total, foram encontradas um total de xxx licenças nos xxx projetos testudados, dentre as quais houveram xxx licenças únicas \gnote{complementar}.
+A Tabela~\ref{tab:resultfreqturbina} e a Tabela~\ref{tab:resultfreqturbina} apresentam alguns resultados gerais deste trabalho.
+%Se buscar licenças so na raiz do projeto 487 repositório com mais de uma licença, quando analisado de forma geral, obteve o resultado de 964 repositorios.
+
+
+\begin{table}[h]
+	\centering
+	\caption{Descrição do uso geral de licenças nos projetos estudados.}
+	\label{tab:resultfreqturbina}	
+	\input{tabelas/dadosGerais.tex}
+	\fonte{Autoria própria.}
+\end{table}
+
+
+Como é possível perceber, quando considerado outliers, na média, já 4,7 licenças por projeto estudado (min: 0, 1o quartil: 1, 3o quartil: 5, max: 256). Há um total de xxx projetos sem nenhuma licença definida, por isso a existência do zero no mínimo. Para fins de facilitar a compreensão, na coluna ao lado são apresentados os mesmos dados, mas com a recomção dos outliers, como é possível perceber, \gnote{complementar como foi feito acima}
+
+
+\begin{table}[h]
+	\centering
+	\caption{Descrição do uso de licenças, organizados pelo tamanho do projeto (em linhas de código).}
+	\label{tab:resultfreqturbina}	
+	\input{tabelas/qtdLinhas.tex}
+	\fonte{Autoria própria.}
+\end{table}
+
+No entanto, na Tabela~\ref{tab:resultfreqturbina} estão descritos os mesmos resultados, organizados por linha de código. Nessa tabela, foi percebido que, em média, projetos pequenos (até 100 linhas de código), há cerca de três licenças (em somente dois projetos). \gnote{escrever o mesmo para projetos médios (de 1000 a 10k) e grandes (maior que 100k)}.
+
+\section{Pacote de Replicação}
+
+Para fins de replicação do trabalho, todos os resultados obtidos nesse estudo estão disponíveis online no endereço \gnote{colocar}. 

@@ -1,0 +1,54 @@
+% FUNDAMENTAÇÃO TEÓRICA--------------------------------------------------------
+
+\chapter{FUNDAMENTAÇÃO TEÓRICA}
+\label{chap:fundamentacao-teorica}
+Licenças de software são um dos artefatos não-executáveis mais importantes de um sistema de software \cite{KarlFogel}. Particularmente relevante para projetos de software livre, licenças de software livre não somente dirigem como alguém pode utilizar um software livre, mas também garante até que pontos outros podem reutiliza-lo \cite{KarlFogel}. Como forma de proteger direitos do software livre e das pessoas que contribuíram com a sua construção, todo projeto de software livre deve claramente declarar ao menos uma licença de software livre reconhecida por uma entidade reguladora como a Free Software Foundation (FSF) ou a Open Source Initiative (OSI). Se nenhuma licença for atribuída ao projeto de software livre, então o autor original retém todos os direitos pela sua obra. Com a ausência de uma licença, outros desenvolvedores --- embora interessados em contribuir com o projeto --- seriam incapazes de contribuir, reproduzir, distribuir, ou criar projetos derivados (também conhecidos como forks) sem o consentimento do criador original. Dessa forma, licenças de software livre empregam um papel fundamental no processo de criação e evolução de um projeto de software livre.
+
+De forma geral, licenças de software podem ser divididas em dois grandes grupos: licenças permissivas e licenças recíprocas (também conhecidas como restritivas). De maneira geral, licenças permissivas (bem como a licença MIT) garantem a liberdade de usar, modificar e redistribuir, além de permitir obras derivadas proprietárias sem a necessidade de librar o código fonte modificado.
+
+Por outro lado, licenças recíprocas (bem como as da família da General Public License -- GPL), embora também garantam a liberdade de usar, modificar e redistribuir, não permitem a criação de obras derivadas proprietárias sem a liberação do código fonte modificado. Essa distinção é particularmente relevante devido a recente quantidade de projetos que tem migrado do contexto proprietário para um contexto livre \cite{pinto2018}. A escolha incorreta ou equivocada de uma licença de software livre, nessa situação, pode requerer com que a empresa mantenedora do projeto seja incapaz de utilizar o seu próprio projeto de software (recém aberto como software livre) se outros de seus projetos de software (ainda proprietários) dependerem deste. Ou ainda, a empresa poderia até se ver forçada a também tornar público os projetos proprietários que dependem do projeto recém aberto. As dezenas \footnote{https://spdx.org/licenses/} de licenças de software livre, que apresentam diversas pequenas variações a este modelo permissivo-recíproco, exacerbam esse problema.
+
+
+\section{Software Livre}
+Por “software livre” devemos entender aquele software que respeita a liberdade e senso de comunidade dos usuários. Grosso modo, isso significa que os usuários possuem a liberdade de executar, copiar, distribuir, estudar, mudar e melhorar o software. Assim sendo, “software livre” é uma questão de liberdade, não de preço. 
+Um programa é software livre se os usuários possuem as quatro liberdades essenciais (tradução livre da \textit{GNU} publicada em \url{https://www.gnu.org/philosophy/free-sw.en.html}) \cite{GNUFS}
+ \begin{enumerate}
+   \item A liberdade de executar o programa como você desejar, para qualquer propósito (liberdade 0).
+   \item A liberdade de estudar como o programa funciona, e adaptá-lo às suas necessidades (liberdade 1). Para tanto, acesso ao código-fonte é um pré-requisito.
+   \item A liberdade de redistribuir cópias de modo que você possa ajudar outros (liberdade 2).
+   \item A liberdade de distribuir cópias de suas versões modificadas a outros (liberdade 3). Desta forma, você pode dar a toda comunidade a chance de beneficiar de suas mudanças. Para tanto, acesso ao código-fonte é um pré-requisito.
+ \end{enumerate}
+
+
+\section{Código aberto (Open Source)}
+Código aberto não significa apenas acesso ao código fonte. Os termos de distribuição do software de código aberto devem obedecer aos seguintes critérios (tradução livre da \textit{Open Source Iniative} publicada em \url{https://opensource.org/docs/definition.php}) \cite{OSIdefinition}
+
+\subsection{Redistribuição Livre}
+A licença não deve restringir nenhuma parte de vender ou distribuir o software como componente de uma distribuição agregada de software contendo programas de várias fontes diferentes. A licença não exigirá royalties ou outras taxas para essa venda.
+
+\subsection{Código Fonte}
+O programa deve incluir o código-fonte e deve permitir a distribuição no código-fonte e no formulário compilado. Quando alguma forma de produto não é distribuída com o código-fonte, deve haver um meio bem divulgado de obter o código-fonte por um custo de reprodução não superior a razoável, de preferência baixando pela Internet gratuitamente. O código fonte deve ser a forma preferida na qual um programador modificaria o programa. Código-fonte deliberadamente ofuscado não é permitido. Formas intermediárias, como a saída de um pré-processador ou tradutor, não são permitidas.
+
+\subsection{Trabalhos Derivados}
+A licença deve permitir modificações e trabalhos derivados, e deve permitir que eles sejam distribuídos sob os mesmos termos que a licença do software original.
+
+\subsection{Integridade do código fonte do autor}
+A licença pode impedir que o código-fonte seja distribuído na forma modificada somente se a licença permitir a distribuição de "arquivos de correção" com o código-fonte com o objetivo de modificar o programa no momento da criação. A licença deve permitir explicitamente a distribuição do software criado a partir do código fonte modificado. A licença pode exigir que os trabalhos derivados levem um nome ou número de versão diferente do software original.
+
+\subsection{Não Discriminação Contra Pessoas ou Grupos}
+A licença não deve discriminar nenhuma pessoa ou grupo de pessoas.
+
+\subsection{Não Discriminação Contra Campos de Atuação}
+A licença não deve impedir ninguém de usar o programa em um campo específico de atuação. Por exemplo, ele não pode restringir o programa de ser usado em uma empresa ou de pesquisa genética.
+
+\subsection{Distribuição de Licença}
+Os direitos associados ao programa devem ser aplicados a todos a quem o programa é redistribuído, sem a necessidade de execução de uma licença adicional por essas partes.
+
+\subsection{A licença não deve ser específica para um produto}
+Os direitos anexados ao programa não devem depender de o programa fazer parte de uma distribuição de software específica. Se o programa for extraído dessa distribuição e usado ou distribuído dentro dos termos da licença do programa, todas as partes a quem o programa for redistribuído deverão ter os mesmos direitos daqueles concedidos em conjunto com a distribuição de software original.
+
+\subsection{A licença não deve restringir outro software}
+A licença não deve restringir outros softwares distribuídos junto com o software licenciado. Por exemplo, a licença não deve insistir em que todos os outros programas distribuídos no mesmo meio sejam software de código aberto.
+
+\subsection{A licença deve ser neutra em termos de tecnologia}
+Nenhuma disposição da licença pode ser baseada em nenhuma tecnologia ou estilo de interface individual.
